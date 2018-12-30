@@ -3,30 +3,41 @@
     <div class="ui input">
       <input v-model="newTodoItem" v-on:keyup.enter="addTodo" type="text" class="square" placeholder="Search...">
     </div>
-    <button v-on:click="addTodo" class="ui button square">
-      <i class="plus icon"></i>
+    <button v-on:click="addTodo" class="ui button add square">
+      +
     </button>
+    <modal v-if="showModal" @close="showModal = false">
+
+    </modal>
   </div>
 </template>
 
 <script>
+  import modal from './common/modal.vue';
   export default {
     data(){
       return {
-        newTodoItem: ''
+        newTodoItem: '',
+        showModal: false,
       }
     },
     methods: {
       addTodo() {
         if (this.newTodoItem !== "") {
           var value = this.newTodoItem && this.newTodoItem.trim();
-          localStorage.setItem(value, value);
+          // localStorage.setItem(value, value);
+          this.$emit('linkevent', value);
           this.clearInput();
+        } else {
+          this.showModal = !this.showModal;
         }
       },
       clearInput() {
         this.newTodoItem = '';
       }
+    },
+    components: {
+      'modal': modal
     }
   };
 </script>
@@ -49,10 +60,14 @@
       width: 100%;
     }
   }
-  .ui.button {
+  .ui.button.add {
     vertical-align: middle;
-    padding: .85777em 1.5em;
-    background-color: darkslateblue;
+    padding: 0 1.5rem;
+    height: 38px;
+    background-color: #0B5195;
+    color: white;
+    font-size: 24px;
+    font-weight: lighter;
     .plus.icon {
       color: white;
       opacity: 1;

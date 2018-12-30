@@ -3,7 +3,7 @@
     <h1 class="ui header">
       <div class="content">
         Todo List
-        <div class="sub header">Take care of your work!</div>
+        <div class="sub header">Take care of your schedule!</div>
       </div>
     </h1>
   </header>
@@ -17,8 +17,16 @@
 
 <style lang="scss">
 header {
-  h1 {
-    color: red;
+  .ui.header {
+    padding-top: 20px;
+    .content {
+      color: #0B5195;
+      font-size: 2.5rem;
+      .sub.header {
+        color: gray;
+        font-size: 1rem;
+      }
+    }
   }
 }
 </style>
