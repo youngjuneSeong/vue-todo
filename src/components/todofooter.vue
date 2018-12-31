@@ -15,7 +15,12 @@
 </script>
 
 <style lang="scss">
-  .ui.negative.button {
+  .ui.basic.negative.button {
     margin: 0 0 20px 0;
+    transition: all .3s;
+    &:hover {
+      background: #db2828 !important;
+      color: white !important;
+    }
   }
 </style>
